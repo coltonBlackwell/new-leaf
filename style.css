@@ -26,6 +26,8 @@
     background-color: #468a03;
     border-radius: 10px;
     text-align: center;
+    border-color: black;
+    border-style: solid;
 }
 
 
@@ -34,6 +36,19 @@
 }
 
 .userCardsImages{
-    width: 100px;
-    height: 100px;
+    width: 90%;
+    height: 95%;
+}
+
+.menuPanel{
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    height: 5vw;
+    text-align: center;
+}
+
+.endTurn{
+    width: 100%;
+    height: 100%;
 }
