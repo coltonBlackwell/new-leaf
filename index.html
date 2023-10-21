@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>new-leaf</title>
+    <title>New Leaf</title>
     <script src="script.js"></script>
+<!-- Add Bootstrap CSS via CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- Add Bootstrap JS and Popper.js via CDN (required for some Bootstrap components) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <h1 id="welcomeTitle">Hello world</h1>
+    <div id="mainTitle">
+        Welcome to the Card Game!!
+    </div>
 
     <div>
-        <form id="getNumPlayer">
-            <input type="text" id="numPlayer" name="numPlayer">
-            <input type="submit" value="Submit">
-          </form>
 
+        <p id="numOfPlayers">Number of Players:</p>
+        <input text="userName" id="userName">
+        <input type="Submit" value="START">
     </div>
-    <br >
-    <button>
-        <a type="button" href="game.html"> START </a>
-    </button>
-
 
 </body>
 </html>
