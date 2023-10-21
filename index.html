@@ -5,25 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Leaf</title>
     <script src="script.js"></script>
-<!-- Add Bootstrap CSS via CDN -->
+    <link href="style.css">  <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Add Bootstrap CSS via CDN -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-<!-- Add Bootstrap JS and Popper.js via CDN (required for some Bootstrap components) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div id="mainTitle">
-        Welcome to the Card Game!!
+    <div class="container introPlayer">
+        <div class="row justify-content-center ">
+            <p class="display-1 WelcomeStatement">New Leaf</p>
+        </div>
+        <div class="row justify-content-center">
+            <div>
+                <form id="myForm">
+                    <label for="inputData"># of players:</label>
+                    <input type="text" id="inputData" name="inputData">
+                    <button type="submit" id="startButton">START</button>
+                  </form>
+            </div>
+        </div>
+    
+        <p id="result">Result of input: </p>
     </div>
 
-    <div>
 
-        <p id="numOfPlayers">Number of Players:</p>
-        <input text="userName" id="userName">
-        <input type="Submit" value="START">
+    <div class="container newLeafGame">
+        <div class="row align-items-start">
+            <div class="col">
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <br>
+            </div>
+        </div>        
+        <div class="row justify-content-center">
+            <div class=" singleCard">
+                <div id="cardContents">
+                    Card Example 
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <br>
+            </div>
+        </div>
+        <div class="row showGrid">
+            <div class="col userCards">
+                Table Card 1
+            </div>
+            <div class="col userCards">
+                Table Card 2
+            </div>
+            <div class="col userCards">
+                Table Card 3
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <br>
+            </div>
+        </div>
     </div>
+    <p id="testing">This is for testing</p>
 
 </body>
+<script>
+
+    function checkUserInput() {
+        const inputData = document.getElementById("inputData").value;
+
+        document.getElementById("result").innerHTML = inputData;
+
+        if (inputData > 0 && inputData <= 6) {
+            return true
+        } else {
+            alert ("Please enter a valid Number!!");
+        }
+    }
+    
+    function turnOnVisibilty() {
+        document.getElementById("newLeafGame").style.display = 'block';
+    }
+
+    function turnOffVisibility(){
+        document.getElementById("introPlayer").style.display = 'none';
+    }
+
+    const button = document.getElementById('startButton');
+
+    button.addEventListener('click', checkUserInput);
+
+    if(checkUserInput == true){
+        button.addEventListener('click', turnOffVisibility);
+        button.addEventListener('click', turnOnVisibilty);
+    }
+
+  </script>
 </html>
