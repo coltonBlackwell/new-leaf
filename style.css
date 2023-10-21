@@ -1,0 +1,35 @@
+.WelcomeStatement{
+    text-align: center;
+}
+
+.newLeafGame{
+    display: block;
+    background-color: grey;
+}
+
+.singleCard{
+    border-color: black;
+    border-radius: px;
+    height: 100px;
+    width: 100px;
+    background-color: green;
+}
+
+.introPlayer{
+    display: block;
+}
+
+.userCards{
+    /* border-color: black; */
+    background-color: greenyellow;
+    border-radius: 10px;
+    text-align: center;
+}
+
+body {
+    background-color: green;
+}
+
+.cardContents{
+    text-align: center;
+}
