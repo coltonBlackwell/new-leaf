@@ -1,4 +1,5 @@
 const all_cards_names = ["Maple", "Plum", "Chestnut", "Dogwood"]
+let trivia_questions = []  // populated by populate_trivia_questions()
 
 
 class Random {
@@ -15,15 +16,6 @@ class TriviaAnswer {
         this.correct_idx = correct_idx
     }
 }
-
-let trivia_questions = [
-    ["q1", new TriviaAnswer("1", "2", 0)],
-    ["q2", new TriviaAnswer("2", "2", 1)],
-    ["q3", new TriviaAnswer("3", "2", 0)],
-    ["q4", new TriviaAnswer("4", "2", 1)],
-    ["q5", new TriviaAnswer("5", "2", 0)],
-]
-
 
 
 class Card {
@@ -83,6 +75,7 @@ class GameMaster {
         this._current_player = null
         this._current_card = null
         this._update_current_player()
+        this._populate_trivia_questions()
     }
 
     _init_players() {
@@ -91,6 +84,22 @@ class GameMaster {
             player_num_to_do[i] = new Player(i)
         }
         return player_num_to_do
+    }
+
+    _populate_trivia_questions() {
+        for(let i in CARD_CONTENTS.cards) {
+            let card_content =  CARD_CONTENTS.cards[i]
+            trivia_questions.push(
+                [
+                    card_content['question'],
+                    new TriviaAnswer(
+                        card_content['answer1'],
+                        card_content['answer2'],
+                        card_content['correct_idx'],
+                    )
+                ]
+            )
+        }
     }
 
     _update_current_player() {
@@ -159,6 +168,7 @@ class GameMaster {
     }
 }
 
+
 class Displayer {
     constructor() {
         self.player_num = document.getElementById("player_num")
@@ -197,7 +207,6 @@ class Displayer {
 
 let game_master = new GameMaster(num_players=3)
 game_master.step_game()
-
 
 function check_answer_and_step(answer_idx) {
     game_master.is_correct_answer(answer_idx)
