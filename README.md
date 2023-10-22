@@ -8,3 +8,5 @@ The objective of the game is to be the first to answer six questions correctly a
 But watch out! The leaf on the other side of the trivia card is random and potentially already in your inventory. So, this game is all about _turning over a new leaf!_ 
    
 Play for yourself here: https://alexblackwell.ca/pages/newleaf/index.html 
+
+![new-leaf](https://github.com/coltonBlackwell/new-leaf/assets/31634087/650d3ddd-0e4a-4bcf-9ac9-f8cc4dde315f)
