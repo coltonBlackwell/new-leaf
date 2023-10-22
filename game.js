@@ -70,6 +70,7 @@ class GameMaster {
         this.game_complete = false
 
         this._num_players = num_players
+        this.counter = 0
         this._player_num_to_do = this._init_players()
         this._current_player_num = 0
         this._current_player = null
@@ -161,22 +162,16 @@ class GameMaster {
 
     step_game() {
         this._current_card = this.generate_new_card()
+        this.counter++;
         Displayer.update_player(this._current_player)
         Displayer.update_card(this._current_card)
-
+        Displayer.update_incrementor(this.counter)
         this.increment_current_player()
     }
 }
 
 
 class Displayer {
-    constructor() {
-        self.player_num = document.getElementById("player_num")
-        self.tile = document.getElementById("tile")
-        self.card = document.getElementById("card")
-        self.card_option1 = document.getElementById("card_option1")
-        self.card_option2 = document.getElementById("card_option2")
-    }
 
     static update_player(player) {
         document.getElementById("player_num").innerHTML = `Player ${player.number + 1}'s turn!`
@@ -202,6 +197,10 @@ class Displayer {
         this.update_player(player)
         document.getElementById("complete").innerHTML = "Game over!"
     }
+
+    static update_incrementor(counter) {
+        document.getElementById("turnNumber").innerHTML = counter;
+    }
 }
 
 
@@ -209,18 +208,9 @@ let game_master = new GameMaster(num_players=3)
 game_master.step_game()
 
 function check_answer_and_step(answer_idx) {
-    turn_number()
     game_master.is_correct_answer(answer_idx)
     let game_is_over = game_master.game_is_over()
     if(!game_is_over) {
         game_master.step_game()
     }
-}
-
-let numOfTurns = 0;
-
-function turn_number(){
-    numOfTurns++;
-
-    document.getElementById("turnNumber").innerHTML = numOfTurns;
 }
