@@ -209,9 +209,18 @@ let game_master = new GameMaster(num_players=3)
 game_master.step_game()
 
 function check_answer_and_step(answer_idx) {
+    turn_number()
     game_master.is_correct_answer(answer_idx)
     let game_is_over = game_master.game_is_over()
     if(!game_is_over) {
         game_master.step_game()
     }
+}
+
+let numOfTurns = 0;
+
+function turn_number(){
+    numOfTurns++;
+
+    document.getElementById("turnNumber").innerHTML = numOfTurns;
 }
