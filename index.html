@@ -7,109 +7,102 @@
     <script src="script.js"></script>
     <link href="style.css">  <link rel="stylesheet" type="text/css" href="style.css">
     <!-- Add Bootstrap CSS via CDN -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <!-- Start stuff -->
     <div class="container introPlayer">
         <div class="row justify-content-center ">
-            <p class="display-1 WelcomeStatement">New Leaf</p>
+            <p class="display-1 WelcomeStatement">Autumn Trivia Game</p>
         </div>
         <div class="row justify-content-center">
             <div>
                 <form id="myForm">
-                    <label for="inputData"># of players:</label>
+                    <label for="inputData">Number of players:</label>
                     <input type="text" id="inputData" name="inputData">
                     <button type="submit" id="startButton">START</button>
                   </form>
             </div>
         </div>
-    
-        <p id="result">Result of input: </p>
     </div>
+    <br><br>
 
-
-    <div class="container newLeafGame">
-        <div class="row align-items-start">
-            <div class="col">
-                
+    <!-- Turn status -->
+    <div class="container">
+        <div class="row">
+            <div class="col-6 menuPanel">
+                <h3>Turn Number:</h3>
+            </div>
+            <div class="col-6 menuPanel">
+                <h3>Player Turn:</h3>
             </div>
         </div>
+    </div>
+    <br><br>
+
+    <!-- main screen -->
+
+    <div class="container">
         <div class="row">
-            <div class="col">
-                <br>
+            <!-- card -->
+            <div class="col-12 col-md-4 pad20">
+                <div class="flip-card" id="flip-card">
+                    <div class="flip-card-inner" id="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3>Autumn Trivia</h3>
+                            <p>Sample autumn trivia card!</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <img src="images/leaf1.png" style="width:300px;height:300px;">
+                        </div>
+                    </div>
+                </div> 
             </div>
-        </div> 
-        
-        
-        
-        <div class="row justify-content-center">
-            <div class=" singleCard">
-                <div id="cardContents">
-                    Card Example 
+
+            <!-- inventory -->
+            <div class="col-12 col-md-8 pad20">
+                <h3 class="center-txt">
+                    Collect all leafs to win!
+                </h3>
+                <div class="row">
+                    <!-- top row -->
+                    <div class="col-4 userCards">
+                        <img src="images/leaf1.png" class="userCardsImages">
+                    </div>
+                    <div class="col-4 userCards">
+                        <img src="images/leaf2.png" class="userCardsImages">
+                    </div>
+                    <div class="col-4 userCards">
+                        <img src="images/leaf3.png" class="userCardsImages">
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- bottom row -->
+                   <div class="col-4 userCards">
+                        <img src="images/leaf4.png" class="userCardsImages">
+                    </div>
+                    <div class="col-4 userCards">
+                        <img src="images/leaf5.png" class="userCardsImages">
+                    </div>
+                    <div class="col-4 userCards">
+                        <img src="images/leaf6.png" class="userCardsImages">
+                    </div>
                 </div>
             </div>
         </div>
-
-
-
-        <div class="row">
-            <div class="col">
-                <br>
-            </div>
-        </div>
-        <div class="row showGrid">
-            <div class="col userCards">
-                <img src="images/mapleLeaf.jpg" class="userCardsImages">
-            </div>
-            <div class="col-sm-1">
-            </div>
-            <div class="col userCards">
-                <img src="images/aspen.png" class="userCardsImages">
-            </div>
-            <div class="col-sm-1">
-            </div>
-            <div class="col userCards">
-                <img src="images/coolLeaf.jpg" class="userCardsImages">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <br>
-            </div>
-        </div>
+        <button onclick="flip_card()">Click me</button>
     </div>
-
-    <div class="row">
-        <br>
-    </div>
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col menuPanel">
-                Turn Number
-            </div>
-            <div class="col menuPanel">
-                <p>Which player is it</p>
-            </div>
-            <div class="col menuPanel">
-                <button id="endTurn" class="endTurn">
-                    END TURN
-                </button>
-            </div>
-        </div>
-    </div>
-
-
-
-    <p id="testing">This is for testing</p>
-
 </body>
 <script>
+
+    function flip_card() {
+        document.getElementById("flip-card-inner").style.transform = "rotateY(180deg)";
+    }
 
     function checkUserInput() {
         const inputData = document.getElementById("inputData").value;
