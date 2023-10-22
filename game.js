@@ -1,4 +1,11 @@
-const all_cards_names = ["Maple", "Plum", "Chestnut", "Dogwood"]
+const all_cards_names = [
+    "leaf1",
+    "leaf2",
+    "leaf3",
+    "leaf4",
+    "leaf5",
+    "leaf6",
+]
 let trivia_questions = []  // populated by populate_trivia_questions()
 
 
@@ -80,7 +87,7 @@ class GameMaster {
 
     _init_players() {
         let player_num_to_do = {}
-        for(let i = 0; i < self.num_players; ++i) {
+        for(let i = 0; i < this._num_players; ++i) {
             player_num_to_do[i] = new Player(i)
         }
         return player_num_to_do
@@ -139,8 +146,10 @@ class GameMaster {
 
     is_correct_answer(answer_idx) {
         let is_correct = this._current_card.is_correct_answer(answer_idx)
-        Displayer.update_correct(is_correct)
         if (is_correct) {
+            console.log(`images/${this._current_card.name_of_leaf}.png`)
+            document.getElementById("back-img").src = `images/${this._current_card.name_of_leaf}.png`
+            document.getElementById("flip-card-inner").style.transform += "rotateY(360deg)";
             this.update_tile()
         }
     }
@@ -178,9 +187,23 @@ class Displayer {
         self.card_option2 = document.getElementById("card_option2")
     }
 
+    static update_tile(player) {
+        console.log("New player inv" + player)
+
+        for(let i = 0; i < all_cards_names.length; ++i) {
+            document.getElementById(`leaf${i+1}`).style.filter="grayscale(95%)"
+        }
+
+        for(const [name, data_obj] of Object.entries(player.tile.cards)) {
+            if(data_obj.owned) {
+                document.getElementById(name).style.filter="grayscale(0)"
+            }
+        }
+    }
+
     static update_player(player) {
         document.getElementById("player_num").innerHTML = `Player ${player.number + 1}'s turn!`
-        document.getElementById("tile").innerHTML = JSON.stringify(player.tile)
+        this.update_tile(player)
 
         let checked_radio_buttons = document.querySelector('input[name="trivia-answer"]:checked')
         if (checked_radio_buttons) {
@@ -200,13 +223,20 @@ class Displayer {
 
     static update_complete(player) {
         this.update_player(player)
-        document.getElementById("complete").innerHTML = "Game over!"
+        document.getElementById("game-status").innerHTML = `Game over, Player ${player.number} wins!`
     }
 }
 
+let game_master;
 
-let game_master = new GameMaster(num_players=3)
-game_master.step_game()
+function start_game() {
+    let num_players = parseInt(document.getElementById("num-players").value)
+    document.getElementById("game-status").innerHTML = "Game running"
+    console.log(num_players)
+    game_master = new GameMaster(num_players)
+    console.log(game_master)
+    game_master.step_game()
+}
 
 function check_answer_and_step(answer_idx) {
     game_master.is_correct_answer(answer_idx)
