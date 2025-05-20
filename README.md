@@ -1,4 +1,5 @@
 # New Leaf - An Autumn Trivia Game
+🎮 Play [now](https://alexblackwell.ca/pages/newleaf/index.html)!
 
 ![new-leaf](https://github.com/coltonBlackwell/new-leaf/assets/31634087/650d3ddd-0e4a-4bcf-9ac9-f8cc4dde315f)
 
@@ -38,7 +39,3 @@ To play the game:
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-   
-- Play for yourself [now](https://alexblackwell.ca/pages/newleaf/index.html)!
-
